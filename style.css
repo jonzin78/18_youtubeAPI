@@ -55,12 +55,74 @@ form {
 }
 
 /* box select */
+/* select 全体 */
 select {
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 40px 10px 14px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid #ccc;
     width: 300px;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: pointer;
+
+    /* デフォルト矢印を消す */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* カスタム矢印 */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* ホバー */
+select:hover {
+    border-color: #000;
+}
+
+/* フォーカス */
+select:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* speed 全体 */
+#doSpeed {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ラジオボタンを消す */
+#doSpeed input[type="radio"] {
+    display: none;
+}
+
+/* 見た目ボタン */
+#doSpeed label {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+/* ホバー */
+#doSpeed label:hover {
+    background: #696969;
+    color: #fff;
+}
+
+/* 選択中 */
+#doSpeed input[type="radio"]:checked+label {
+    background: #000;
+    color: #fff;
+    border-color: #000;
 }
 
 /* control */
@@ -94,15 +156,62 @@ nav li:hover {
 }
 
 /* volume */
+/* ===== 共通 ===== */
 input[type="range"] {
     -webkit-appearance: none;
     width: 120px;
     height: 6px;
     background: transparent;
-    /* ←ここ重要（ズレ防止） */
     cursor: pointer;
 }
 
+/* ===== Chrome / Safari ===== */
+
+/* 線（未選択部分） */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #ccc;
+    /* ←ここで線の色 */
+    border-radius: 3px;
+}
+
+/* つまみ */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border-radius: 50%;
+    margin-top: -4px;
+    /* 真ん中に合わせる */
+}
+
+/* ===== Firefox ===== */
+
+/* 線（全体） */
+input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #ccc;
+    /* ←ここ */
+    border-radius: 3px;
+}
+
+/* 左側（選択済み部分） */
+input[type="range"]::-moz-range-progress {
+    height: 6px;
+    background: #000;
+    /* ←進んだ部分の色 */
+    border-radius: 3px;
+}
+
+/* つまみ */
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border-radius: 50%;
+    border: none;
+}
 
 label {
     font-size: 14px;
