@@ -125,6 +125,14 @@ select:focus {
     border-color: #000;
 }
 
+/* スピードだけ li のデザイン消す */
+nav li:has(#doSpeed) {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: default;
+}
+
 /* control */
 nav {
     margin-top: 30px;
